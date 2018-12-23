@@ -3,7 +3,7 @@ sample_result_folder = "../sample_results/"
 import cv2 as cv
 import json
 
-sample_path = sample_folder + "img009.jpg"
+sample_path = sample_folder + "img009crop.png"
 img = cv.imread(sample_path, cv.IMREAD_GRAYSCALE)
 img = cv.medianBlur(img,3)
 
@@ -29,12 +29,12 @@ with open(sample_result_folder+"centroids.json", 'wb') as outfile:
     json.dump(centroids, outfile)
 
 
-
+cv.imwrite(sample_result_folder+"res.png", img)
 for c in centroids:
     # print(c)
     # I draw a black little empty circle in the centroid position
     cv.circle(img,c,5,(100,110,100))
 
-cv.imwrite(sample_result_folder+"res.png", img)
+cv.imwrite(sample_result_folder+"rescentroid.png", img)
 0xFF & cv.waitKey()
 cv.destroyAllWindows()
