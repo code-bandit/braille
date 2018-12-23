@@ -1,10 +1,11 @@
 sample_folder = "../samples/"
 sample_result_folder = "../sample_results/"
 import cv2 as cv
+import json
 
 sample_path = sample_folder + "img009.jpg"
 img = cv.imread(sample_path, cv.IMREAD_GRAYSCALE)
-img = cv.medianBlur(img, 3)
+img = cv.medianBlur(img,3)
 _,img = cv.threshold(img,0,255,cv.THRESH_OTSU)
 h, w = img.shape[:2]
 # cv.waitKey(0)
@@ -21,13 +22,18 @@ for m in moments:
 
 # print(len(centroids))
 print('cv2 version:', cv.__version__)
-print('centroids:', centroids)
+#print('centroids:', centroids)
+
+with open(sample_result_folder+"centroids.json", 'wb') as outfile:
+    json.dump(centroids, outfile)
+
+
 
 for c in centroids:
     # print(c)
     # I draw a black little empty circle in the centroid position
-    cv.circle(img,c,5,(0,0,0))
+    cv.circle(img,c,5,(100,110,100))
 
-cv.imshow('image', img)
+cv.imwrite(sample_result_folder+"res.png", img)
 0xFF & cv.waitKey()
 cv.destroyAllWindows()
