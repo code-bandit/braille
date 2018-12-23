@@ -4,6 +4,7 @@ import cv2 as cv
 
 sample_path = sample_folder + "img009.jpg"
 img = cv.imread(sample_path, cv.IMREAD_GRAYSCALE)
+img = cv.medianBlur(img, 3)
 _,img = cv.threshold(img,0,255,cv.THRESH_OTSU)
 h, w = img.shape[:2]
 # cv.waitKey(0)
