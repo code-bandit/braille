@@ -41,10 +41,10 @@ def seperateintolines(img):
     while i < height:
         for j in range(width):
             if img[i][j] == 255:
-                line = img[i-10:i+40,...]
+                line = img[i-10:i+70,...]
                 lines.append(line)
                 scipy.misc.imsave('sample_results/lines/'+str(len(lines)) +'.png', line)
-                i=i+40
+                i=i+70
                 break
         i=i+1
 
