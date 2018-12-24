@@ -3,7 +3,7 @@ sample_result_folder = "../sample_results/"
 import cv2 as cv
 import json
 
-sample_path = sample_folder + "img009crop.png"
+sample_path = sample_folder + "img009.jpg"
 img = cv.imread(sample_path, cv.IMREAD_GRAYSCALE)
 img = cv.medianBlur(img,3)
 _,img = cv.threshold(img,0,255,cv.THRESH_OTSU)
